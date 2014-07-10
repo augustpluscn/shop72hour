@@ -185,4 +185,27 @@ class adminController extends medoo
 		$this->display( $datas );
 	}
 
+	function save_passwd()
+	{
+		header("Content-type: text/html; charset=utf-8");
+		$pass = $_POST['passwd'];
+
+		$passwd = md5($pass);
+
+		$database = new admin();
+		$result = $database->passwd_update( $passwd );
+		if ($result) {
+			echo "<script>";
+			echo "alert('密码修改成功');";
+	      	echo "window.location.href = '?c=login&a=logout' ";
+	      	echo "</script>";
+		}
+		else{
+			echo "<script>";
+			echo "alert('密码修改失败');";
+	      	echo "window.location.href = '?c=admin&a=index' ";
+	      	echo "</script>";
+		}
+	}
+
 }

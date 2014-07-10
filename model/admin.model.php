@@ -122,6 +122,17 @@ class admin extends medoo
 		return $update_num;
 	}
 
+	public function passwd_update( $passwd )
+	{
+		$update_num = $this->update("shop_user", [
+			"password" => $passwd
+		], [
+			"username[=]" => $_SESSION['user']
+		]);
+
+		return $update_num;
+	}
+
 	public function cat_to_name( $catid )
 	{
 		$datas = $this->select("shop_cat", [
