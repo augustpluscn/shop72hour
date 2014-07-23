@@ -2,11 +2,6 @@
 
 class indexController extends medoo
 {
-	function __construct()
-	{
-		parent::__construct();
-	}
-
 	function index()
 	{
 		$date = get('time');

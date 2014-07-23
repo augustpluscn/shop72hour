@@ -4,7 +4,6 @@ class adminController extends medoo
 {
 	function __construct()
 	{
-		parent::__construct();
 		check_login();
 	}
 

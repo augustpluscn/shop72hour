@@ -2,12 +2,6 @@
 
 class loginController extends medoo
 {
-	function __construct()
-	{
-		parent::__construct();
-
-	}
-
 	function index()
 	{
 		$datas['title'] = '登陆';
