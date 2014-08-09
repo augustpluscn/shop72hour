@@ -38,7 +38,7 @@ class adminController extends medoo
 	function delete_cat()
 	{
 		header("Content-type: text/html; charset=utf-8");
-		$catid = $_GET['id'];
+		$catid = addslashes($_GET['id']);
 		$database = new admin();
 		$result = $database->data_delete( 'shop_cat', $catid );
 		if ($result == 1) {
@@ -60,7 +60,7 @@ class adminController extends medoo
 	function delete_content()
 	{
 		header("Content-type: text/html; charset=utf-8");
-		$contentid = $_GET['id'];
+		$contentid = addslashes($_GET['id']);
 		$database = new admin();
 		$result = $database->data_delete( 'shop_content', $contentid );
 		if ($result == 1) {
@@ -80,7 +80,7 @@ class adminController extends medoo
 	function add_cat()
 	{
 		header("Content-type: text/html; charset=utf-8");
-		$catname = $_POST['catname'];
+		$catname = addslashes($_POST['catname']);
 
 		$database = new admin();
 		$result = $database->cat_add( $catname );
@@ -101,11 +101,11 @@ class adminController extends medoo
 	function add_content()
 	{
 		header("Content-type: text/html; charset=utf-8");
-		$content['title'] = $_POST['title'];
-		$content['cat'] = $_POST['cat'];
-		$content['date'] = $_POST['date'];
-		$content['picture'] = $_POST['picture'];
-		$content['url'] = $_POST['url'];
+		$content['title'] = addslashes($_POST['title']);
+		$content['cat'] = addslashes($_POST['cat']);
+		$content['date'] = addslashes($_POST['date']);
+		$content['picture'] = addslashes($_POST['picture']);
+		$content['url'] = addslashes($_POST['url']);
 
 		$database = new admin();
 		$result = $database->content_add( $content );
@@ -126,8 +126,8 @@ class adminController extends medoo
 	function update_cat()
 	{
 		header("Content-type: text/html; charset=utf-8");
-		$cat['id'] = $_POST['pk'];
-		$cat['catname'] = $_POST['value'];
+		$cat['id'] = addslashes($_POST['pk']);
+		$cat['catname'] = addslashes($_POST['value']);
 
 		//print_r($_POST);
 		$database = new admin();
@@ -141,7 +141,7 @@ class adminController extends medoo
 	}
 
 	function editcontent(){
-		$id = $_GET['id'];
+		$id = addslashes($_GET['id']);
 
 		$datas['a'] = 'index';
 		$database = new admin();
@@ -153,12 +153,12 @@ class adminController extends medoo
 	function save_content()
 	{
 		header("Content-type: text/html; charset=utf-8");
-		$content['id'] = $_POST['id'];
-		$content['title'] = $_POST['title'];
-		$content['cat'] = $_POST['cat'];
-		$content['date'] = $_POST['date'];
-		$content['picture'] = $_POST['picture'];
-		$content['url'] = $_POST['url'];
+		$content['id'] = addslashes($_POST['id']);
+		$content['title'] = addslashes($_POST['title']);
+		$content['cat'] = addslashes($_POST['cat']);
+		$content['date'] = addslashes($_POST['date']);
+		$content['picture'] = addslashes($_POST['picture']);
+		$content['url'] = addslashes($_POST['url']);
 
 		$database = new admin();
 		$result = $database->content_update( $content );
@@ -187,7 +187,7 @@ class adminController extends medoo
 	function save_passwd()
 	{
 		header("Content-type: text/html; charset=utf-8");
-		$pass = $_POST['passwd'];
+		$pass = addslashes($_POST['passwd']);
 
 		$passwd = md5($pass);
 
